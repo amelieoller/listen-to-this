@@ -1,0 +1,18 @@
+<div class="flex">
+	<Bands />
+	<Channels />
+
+	{{!-- Main --}}
+	<main class="w-full p-2 bg-gray-200 h-screen main">
+		{{format-timestamp '09/05/2021 4:30'}}
+
+		<LinkTo @route="login" @tagName="button"
+			class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20">
+				<path d="M19,10l-6-5v3H6v4h7v3L19,10z M3,3h8V1H3C1.9,1,1,1.9,1,3v14c0,1.1,0.9,2,2,2h8v-2H3V3z" />
+			</svg>
+
+			<span>Logout</span>
+		</LinkTo>
+	</main>
+</div>
