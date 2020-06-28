@@ -1,5 +1,10 @@
 {{!-- Channel Nav --}}
-<nav class="w-48 flex-none bg-gray-800 text-white h-screen channels">
-	{{@band.name}}
-	<ChannelItem />
+<nav class="w-48 flex-none bg-gray-800 text-white h-screen channels overflow-y-scroll">
+	<div class="p-2">{{@band.name}}</div>
+
+	<div class="flex flex-col">
+		{{#each @band.channels as |channel|}}
+		<ChannelItem @channel={{channel}} />
+		{{/each}}
+	</div>
 </nav>

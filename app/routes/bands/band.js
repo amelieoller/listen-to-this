@@ -1,8 +1,9 @@
 import Route from '@ember/routing/route';
-import { ALL_BANDS } from '../bands';
+import fetch from 'fetch';
 
 export default class BandsBandRoute extends Route {
-  model({ bandId }) {
-    return ALL_BANDS.find((band) => band.id === bandId);
+  async model({ bandId }) {
+    const resp = await fetch(`http://localhost:3000/api/v1/bands/${bandId}`);
+    return resp.json();
   }
 }

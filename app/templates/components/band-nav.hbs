@@ -1,5 +1,5 @@
 {{!-- Bands Nav --}}
-<nav class="w-12 flex-none p-2 bg-gray-900 text-white text-white h-screen bands">
+<nav class="w-12 flex-none p-2 bg-gray-900 text-white text-white h-screen bands overflow-y-scroll">
 	{{#each @bands as |band|}}
 	<BandItem @band={{band}} />
 	{{/each}}

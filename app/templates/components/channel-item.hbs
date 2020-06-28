@@ -1,3 +1,4 @@
-<div class="px-2 pt-2 text-sm font-thin truncate">
-	Channel Name
-</div>
+<LinkTo @route="bands.band.channel" @model={{@channel.id}} @tagName="button" @activeClass="bg-blue-300"
+	class="text-sm font-thin truncate w-full text-left pl-2">
+	{{@channel.name}}
+</LinkTo>

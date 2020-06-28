@@ -1,13 +1,38 @@
 {{!-- Main --}}
-<main class="w-full p-2 bg-gray-200 h-screen main">
-	{{format-timestamp '09/05/2021 4:30'}}
+<main class="w-full p-2 bg-gray-200 h-screen main flex flex-col justify-between">
+	<div class="flex flex-col h-full justify-end overflow-y-scroll">
+		<LinkTo @route="login" @tagName="button"
+			class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center bands-page__logout-button">
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20">
+				<path d="M19,10l-6-5v3H6v4h7v3L19,10z M3,3h8V1H3C1.9,1,1,1.9,1,3v14c0,1.1,0.9,2,2,2h8v-2H3V3z" />
+			</svg>
 
-	<LinkTo @route="login" @tagName="button"
-		class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center bands-page__logout-button">
-		<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 20 20">
-			<path d="M19,10l-6-5v3H6v4h7v3L19,10z M3,3h8V1H3C1.9,1,1,1.9,1,3v14c0,1.1,0.9,2,2,2h8v-2H3V3z" />
-		</svg>
+			<span>Logout</span>
+		</LinkTo>
 
-		<span>Logout</span>
-	</LinkTo>
+		{{#each this.model.messages as |message|}}
+
+		<div class="max-w-sm w-full lg:max-w-full lg:flex mb-4">
+			<div class="border-solid border-1 border-gray-400 bg-white rounded p-4 leading-normal w-full">
+				<div class="flex items-center">
+					<div class="text-sm">
+						<p class="text-gray-900 leading-none">{{message.user.username}}</p>
+						<p class="text-gray-600">{{format-timestamp message.created_at}}</p>
+					</div>
+				</div>
+
+				<div class="">
+					<p class="text-gray-700 text-base">{{message.content}}</p>
+				</div>
+			</div>
+		</div>
+
+		{{/each}}
+	</div>
+
+	<form class="w-full">
+		<input
+			class="bg-gray-100 appearance-none border-2 border-gray-300 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+			id="inline-full-name" type="text" placeholder="New Message">
+	</form>
 </main>
