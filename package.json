@@ -6,6 +6,7 @@
   "repository": "",
   "license": "MIT",
   "author": "",
+  "main": "prod-server.js",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -15,7 +16,8 @@
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*",
     "lint:hbs": "ember-template-lint .",
     "lint:js": "eslint .",
-    "start": "ember serve",
+    "startX": "ember serve",
+    "start": "node ./prod-server.js",
     "test": "npm-run-all lint:* test:*",
     "test:ember": "ember test"
   },
@@ -32,6 +34,7 @@
     "ember-cli-app-version": "^3.2.0",
     "ember-cli-babel": "^7.20.5",
     "ember-cli-dependency-checker": "^3.2.0",
+    "ember-cli-fastboot": "^2.2.3",
     "ember-cli-htmlbars": "^5.1.2",
     "ember-cli-inject-live-reload": "^2.0.2",
     "ember-cli-postcss": "^6.0.1",
@@ -39,11 +42,14 @@
     "ember-cli-uglify": "^3.0.0",
     "ember-data": "~3.19.0",
     "ember-export-application-global": "^2.0.1",
-    "ember-fetch": "^8.0.1",
     "ember-load-initializers": "^2.1.1",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-qunit": "^4.6.0",
     "ember-resolver": "^8.0.0",
+    "ember-service-worker": "^0.8.4",
+    "ember-service-worker-asset-cache": "^0.6.4",
+    "ember-service-worker-cache-fallback": "^0.6.2",
+    "ember-service-worker-index": "^0.7.0",
     "ember-source": "~3.19.0",
     "ember-template-lint": "^2.8.0",
     "ember-welcome-page": "^4.0.0",
@@ -55,6 +61,10 @@
     "postcss-import": "^12.0.1",
     "qunit-dom": "^1.2.0",
     "tailwindcss": "^1.4.6"
+  },
+  "dependencies": {
+    "ember-fetch": "^8.0.1",
+    "fastboot-app-server": "^2.0.0"
   },
   "engines": {
     "node": "10.* || >= 12"
