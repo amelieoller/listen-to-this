@@ -1,0 +1,16 @@
+<div class="max-w-sm w-full lg:max-w-full lg:flex mb-4">
+	<div class="border-solid border-1 border-gray-400 bg-white rounded p-4 leading-normal w-full">
+		<div class="flex items-center">
+			<div class="text-sm">
+				<p class="text-gray-900 leading-none">{{@message.user.username}}</p>
+				<p class="text-gray-600">{{format-timestamp @message.created_at}}</p>
+			</div>
+		</div>
+
+		<div class="">
+			<p class="text-gray-700 text-base">{{@message.content}}</p>
+		</div>
+	</div>
+
+	<button type="button" {{on 'click' @deleteMessage}}>Delete</button>
+</div>

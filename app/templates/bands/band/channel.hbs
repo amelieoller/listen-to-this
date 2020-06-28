@@ -1,5 +1,6 @@
 {{!-- Main --}}
-<main class="w-full p-2 bg-gray-200 h-screen main flex flex-col justify-between">
+<MessageContainer @channel={{this.model}} as |messages channelApi|>
+
 	<div class="flex flex-col h-full justify-end overflow-y-scroll">
 		<LinkTo @route="login" @tagName="button"
 			class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center bands-page__logout-button">
@@ -10,29 +11,12 @@
 			<span>Logout</span>
 		</LinkTo>
 
-		{{#each this.model.messages as |message|}}
+		{{#each messages as |message|}}
 
-		<div class="max-w-sm w-full lg:max-w-full lg:flex mb-4">
-			<div class="border-solid border-1 border-gray-400 bg-white rounded p-4 leading-normal w-full">
-				<div class="flex items-center">
-					<div class="text-sm">
-						<p class="text-gray-900 leading-none">{{message.user.username}}</p>
-						<p class="text-gray-600">{{format-timestamp message.created_at}}</p>
-					</div>
-				</div>
-
-				<div class="">
-					<p class="text-gray-700 text-base">{{message.content}}</p>
-				</div>
-			</div>
-		</div>
+		<Message @message={{message}} @deleteMessage={{fn channelApi.deleteMessage message.id}} />
 
 		{{/each}}
 	</div>
 
-	<form class="w-full">
-		<input
-			class="bg-gray-100 appearance-none border-2 border-gray-300 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-			id="inline-full-name" type="text" placeholder="New Message">
-	</form>
-</main>
+	<ChannelFooter @sendMessage={{channelApi.createMessage}} />
+</MessageContainer>
