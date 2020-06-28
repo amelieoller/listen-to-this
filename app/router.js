@@ -6,15 +6,21 @@ export default class Router extends EmberRouter {
   rootURL = config.rootURL;
 }
 
-Router.map(function() {
-  this.route('bands', function() {
-    this.route('band', {
-      path: ':bandId'
-    }, function() {
-      this.route('channel', {
-        path: ':channelId'
-      });
-    });
+Router.map(function () {
+  this.route('bands', function () {
+    this.route(
+      'band',
+      {
+        // eslint-disable-next-line ember/routes-segments-snake-case
+        path: ':bandId',
+      },
+      function () {
+        this.route('channel', {
+          // eslint-disable-next-line ember/routes-segments-snake-case
+          path: ':channelId',
+        });
+      }
+    );
   });
   this.route('login');
 });
